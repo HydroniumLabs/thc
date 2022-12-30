@@ -1,0 +1,25 @@
+[package]
+authors = ["Automatically generated"]
+edition = "2018"
+name = "thc-fuzz"
+publish = false
+version = "0.0.0"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.thc]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+doc = false
+name = "decompress"
+path = "fuzz_targets/decompress.rs"
+test = false

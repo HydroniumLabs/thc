@@ -1,0 +1,37 @@
+[package]
+name = "thc"
+version = "0.1.0"
+authors = ["Sylvain Laperche <sylvain.laperche@gmail.com>"]
+edition = "2021"
+description = "A compression scheme tailored for H3 cell indexes"
+documentation = "https://docs.rs/thc/"
+readme = "README.md"
+homepage = "https://docs.rs/thc"
+repository = "https://github.com/HydroniumLabs/thc"
+license = "BSD-3-Clause"
+keywords = ["h3", "compression"]
+categories = ["algorithms"]
+
+[package.metadata.release]
+pre-release-commit-message = "release {{version}}"
+pre-release-replacements = [
+  {file="CHANGELOG.md", search="Unreleased", replace="{{version}}", min=1},
+  {file="CHANGELOG.md", search="ReleaseDate", replace="{{date}}", min=1},
+  {file="CHANGELOG.md", search="<!-- next-header -->", replace="<!-- next-header -->\n## [Unreleased] - ReleaseDate\n", exactly=1},
+]
+
+[dependencies]
+bitvec = { version = "1.0", default-features = false, features = ["alloc"] }
+either = { version = "1.0", default-features = false }
+h3o = { git = "ssh://git@github.com/HydroniumLabs/h3o", default-features = false }
+
+[dev-dependencies]
+byteorder = { version = "1.0", default-features = false, features = ["std"] }
+criterion = { version = "0.4", default-features = false, features = ["plotters", "html_reports"] }
+
+[[bench]]
+harness = false
+name = "thc"
+
+[profile.release]
+lto = "thin"
