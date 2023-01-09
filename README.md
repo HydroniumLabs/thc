@@ -3,6 +3,7 @@
 [![Crates.io](https://img.shields.io/crates/v/thc.svg)](https://crates.io/crates/thc)
 [![Docs.rs](https://docs.rs/thc/badge.svg)](https://docs.rs/thc)
 [![CI Status](https://github.com/HydroniumLabs/thc/actions/workflows/ci.yml/badge.svg)](https://github.com/HydroniumLabs/thc/actions)
+[![Coverage](https://img.shields.io/codecov/c/github/HydroniumLabs/thc)](https://app.codecov.io/gh/HydroniumLabs/thc)
 [![License](https://img.shields.io/badge/license-BSD-green)](https://opensource.org/licenses/BSD-3-Clause)
 
 This library allows to compress an H3 cell set into a compacted space-efficient
