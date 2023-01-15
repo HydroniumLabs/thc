@@ -14,6 +14,10 @@ Possible sections are:
 <!-- next-header -->
 ## [Unreleased] - ReleaseDate
 
+### Changed
+
+- bump h3o
+
 ## [0.1.0] - 2023-01-09
 
 - initial release, CHT (Compressed H3 Tree) codec

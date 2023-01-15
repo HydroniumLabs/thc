@@ -1,6 +1,6 @@
 [package]
 name = "thc"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Sylvain Laperche <sylvain.laperche@gmail.com>"]
 edition = "2021"
 description = "A compression scheme tailored for H3 cell indexes"
@@ -23,7 +23,7 @@ pre-release-replacements = [
 [dependencies]
 bitvec = { version = "1.0", default-features = false, features = ["alloc"] }
 either = { version = "1.0", default-features = false }
-h3o = { version = "0.1", default-features = false }
+h3o = { version = "0.2", default-features = false }
 
 [dev-dependencies]
 byteorder = { version = "1.0", default-features = false, features = ["std"] }
