@@ -629,7 +629,7 @@ fn steps_from_cell_index(index: CellIndex) -> impl Iterator<Item = Step> {
 
 fn cell_index_from_steps(steps: &[Step]) -> Result<CellIndex, DecodingError> {
     // Default cell index (resolution 0, base cell 0).
-    let mut index = 0x8001fffffffffff;
+    let mut index = h3o_bit::DEFAULT_CELL_INDEX;
 
     let (base_cell, directions) = match steps {
         &[head, ref tail @ ..] => {
@@ -647,13 +647,11 @@ fn cell_index_from_steps(steps: &[Step]) -> Result<CellIndex, DecodingError> {
     // `directions.len() <= Resolution::Fifteen`, checked above.
     #[allow(clippy::cast_possible_truncation)]
     let resolution = directions.len() as u8;
-    // Resolution bit offset: 52.
-    index |= u64::from(resolution) << 52;
+    index = h3o_bit::set_resolution(index, resolution);
 
     // Set base cell.
     if let Step::BaseCell(cell) = base_cell {
-        // Base cell bit offset: 45
-        index |= u64::from(cell) << 45;
+        index = h3o_bit::set_base_cell(index, cell);
     } else {
         // Either we have no step (empty path error above) or we have at least
         // one and thus the first one is a base cell by definition.
@@ -667,10 +665,7 @@ fn cell_index_from_steps(steps: &[Step]) -> Result<CellIndex, DecodingError> {
             #[allow(clippy::cast_possible_truncation)]
             let resolution = (i + 1) as u8; // Directions start at res 1.
 
-            // Max res: 15, direction bit width: 3
-            let offset = (15 - resolution) * 3;
-            index =
-                (index & !(0b111 << offset)) | (u64::from(direction) << offset);
+            index = h3o_bit::set_direction(index, resolution, direction);
         } else {
             // Only the first step can be decoded as a base cell.
             unreachable!("more than one base cell");
