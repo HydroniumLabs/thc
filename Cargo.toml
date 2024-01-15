@@ -23,7 +23,7 @@ pre-release-replacements = [
 [dependencies]
 bitvec = { version = "1.0", default-features = false, features = ["alloc"] }
 either = { version = "1.0", default-features = false }
-h3o = { version = "0.4", default-features = false }
+h3o = { version = "0.5", default-features = false }
 h3o-bit = { version = "0.1", default-features = false }
 
 [dev-dependencies]
