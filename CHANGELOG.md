@@ -14,6 +14,10 @@ Possible sections are:
 <!-- next-header -->
 ## [Unreleased] - ReleaseDate
 
+### Changed
+
+- Discontinued: development moved [here](https://github.com/HydroniumLabs/h3o-zip)
+
 ## [0.1.5] - 2024-03-20
 
 ### Changed

@@ -1,6 +1,6 @@
 [package]
 name = "thc"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["Sylvain Laperche <sylvain.laperche@gmail.com>"]
 edition = "2021"
 description = "A compression scheme tailored for H3 cell indexes"
